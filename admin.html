@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Page - Trip Meter Log</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h2>⚙️ Admin Panel</h2>
+    <button onclick="window.location.href='dashboard.html'">⬅ Back to Dashboard</button>
+  </header>
+
+  <main>
+    <section>
+      <h3>Create User</h3>
+      <form id="userForm">
+        <input type="text" id="newUsername" placeholder="Username" required>
+        <input type="password" id="newPassword" placeholder="Password" required>
+        <select id="newRole">
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button type="submit">Create User</button>
+      </form>
+      <ul id="userList"></ul>
+    </section>
+
+    <section>
+      <h3>Create Location</h3>
+      <form id="locForm">
+        <input type="text" id="locName" placeholder="Location Name" required>
+        <button type="submit">Add Location</button>
+      </form>
+      <ul id="locList"></ul>
+    </section>
+  </main>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

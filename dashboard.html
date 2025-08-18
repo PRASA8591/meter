@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trip Meter Log - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h2>🚗 Trip Meter Log</h2>
+    <p id="whoami"></p>
+    <div class="header-buttons">
+      <button id="btnAdminPage" class="hidden">Admin Page</button>
+      <button id="btnExport">Export</button>
+      <button id="btnSignOut">Sign Out</button>
+    </div>
+  </header>
+
+  <main>
+    <button id="btnAddRow" class="add-row-btn">➕ Add Row</button>
+
+    <table id="tripTable">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Start Time</th>
+          <th>Start Meter</th>
+          <th>End Time</th>
+          <th>End Meter</th>
+          <th>Total Meter</th>
+          <th>Locations</th>
+          <th id="thUser" class="hidden">User</th>
+          <th id="thActions" class="hidden">Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </main>
+
+  <!-- Locations Modal -->
+  <div id="locationsModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Select Locations</h3>
+      <div id="locationsOptions"></div>
+      <div class="modal-buttons">
+        <button id="btnLocApply">Apply</button>
+        <button id="btnLocCancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+  <script type="module" src="dashboard.js"></script>
+</body>
+</html>
