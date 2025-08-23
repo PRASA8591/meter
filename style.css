@@ -1,105 +1,304 @@
-/* General */
-body {
+/* ---------- GLOBAL RESET ---------- */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: Arial, sans-serif;
-  background: #f5f6fa;
-  color: #333;
 }
-header {
-  background: #2d98da;
-  color: #fff;
-  padding: 15px;
+
+body {
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* ---------- HEADER / TOPBAR ---------- */
+.topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #1e88e5;
+  color: #fff;
+  padding: 10px 20px;
 }
-header h2 { margin: 0; }
-header button { margin-left: 10px; }
 
-button {
-  padding: 8px 14px;
+.topbar .logo {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.topbar .logo img {
+  margin-right: 8px;
+}
+
+.topbar .actions button {
+  margin-left: 10px;
+  padding: 6px 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
 }
-button:hover { opacity: 0.9; }
-button.hidden { display: none; }
 
-.add-row-btn {
-  background: #44bd32;
-  color: #fff;
-  margin: 10px;
+.topbar .actions button:hover {
+  opacity: 0.9;
+}
+
+#btnSignOut {
+  background: #e53935;
+  color: white;
+}
+
+#btnExport {
+  background: #43a047;
+  color: white;
+}
+
+#btnAdminPage {
+  background: #fbc02d;
+  color: black;
+}
+
+/* ---------- FILTERS ---------- */
+.filters {
+  margin: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filters label, 
+.filters input, 
+.filters button {
+  font-size: 14px;
+}
+
+.filters input[type="date"], 
+.filters input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.filters button {
+  padding: 6px 12px;
+  background: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.filters button:hover {
+  background: #1565c0;
+}
+
+/* ---------- ADD ROW BUTTON ---------- */
+.btn-green {
+  margin: 10px 15px;
+  padding: 8px 14px;
+  background: #43a047;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-green:hover {
+  background: #2e7d32;
+}
+
+/* ---------- TABLE ---------- */
+.table-container {
+  margin: 15px;
+  overflow-x: auto;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  max-height: 70vh;
+  background: white;
+  border-radius: 6px;
 }
 
 #tripTable {
-  width: 100%;
   border-collapse: collapse;
-  margin: 15px auto;
-  background: #fff;
-}
-#tripTable th, #tripTable td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-#tripTable th {
-  background: #273c75;
-  color: #fff;
+  width: 100%;
+  min-width: 800px;
 }
 
-/* Modal */
+#tripTable th, 
+#tripTable td {
+  border: 1px solid #ddd;
+  padding: 6px;
+  text-align: center;
+  min-width: 80px;
+}
+
+#tripTable thead th {
+  position: sticky;
+  top: 0;
+  background: #0d47a1;
+  color: white;
+  z-index: 5;
+}
+
+/* Column resize handle */
+#tripTable thead th div {
+  background: transparent;
+}
+#tripTable thead th div:hover {
+  background: rgba(0,0,0,0.1);
+}
+
+/* Inputs inside table */
+#tripTable input[type="date"],
+#tripTable input[type="time"],
+#tripTable input[type="number"],
+#tripTable input[type="text"] {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ---------- MODAL ---------- */
 .modal {
   position: fixed;
-  top: 0; left: 0; right:0; bottom:0;
-  background: rgba(0,0,0,0.6);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  z-index: 100;
 }
-.modal.hidden { display: none; }
+
+.modal.hidden {
+  display: none;
+}
+
 .modal-content {
-  background: #fff;
+  background: white;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 6px;
   width: 90%;
   max-width: 400px;
 }
 
-/* Login Page */
-.login-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #74b9ff, #0984e3);
-}
-.login-container {
-  background: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  text-align: center;
-  width: 90%;
-  max-width: 350px;
-}
-.login-form input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-.login-form button {
-  width: 100%;
-  padding: 10px;
-  background: #2d98da;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  margin-top: 10px;
+.modal-content h3 {
+  margin-bottom: 10px;
 }
 
-/* Responsive */
-@media (max-width:600px) {
-  header { flex-direction: column; align-items: flex-start; }
-  #tripTable { font-size: 14px; }
+.modal-content button {
+  margin: 5px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#btnLocApply {
+  background: #1e88e5;
+  color: white;
+}
+
+#btnLocCancel {
+  background: #e53935;
+  color: white;
+}
+
+/* ---------- LOGIN PAGE ---------- */
+.login-container {
+  max-width: 350px;
+  margin: 60px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  background: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background: #1565c0;
+}
+
+/* ---------- ADMIN PAGE ---------- */
+.admin-container {
+  margin: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.admin-container h2 {
+  margin-bottom: 15px;
+}
+
+.admin-container input {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 5px;
+}
+
+.admin-container button {
+  padding: 6px 12px;
+  margin: 5px;
+  background: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-container button:hover {
+  background: #1565c0;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  .table-container {
+    max-height: 60vh;
+  }
+
+  #tripTable {
+    font-size: 12px;
+    min-width: 600px;
+  }
+
+  .login-container {
+    margin: 30px auto;
+    width: 90%;
+  }
 }
